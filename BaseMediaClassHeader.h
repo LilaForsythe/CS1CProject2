@@ -25,7 +25,7 @@ class BaseMedia
     BaseMedia(Type type, string name, double length, string date, int id, string author, string genre);
     ~BaseMedia();
 
-    string getName() const;     //Returns the name of the media
+    string getName();     //Returns the name of the media
     void setName(string name);  //Sets a new name for the media
 
     Type getType();

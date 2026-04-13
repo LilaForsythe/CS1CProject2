@@ -22,7 +22,7 @@ BaseMedia::~BaseMedia()
 }
 
 
-string BaseMedia::getName() const
+string BaseMedia::getName()
 {
     return name;
 }
