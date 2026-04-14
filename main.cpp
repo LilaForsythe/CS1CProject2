@@ -5,17 +5,13 @@
 #include "BaseMediaClassHeader.h"
 #include "AudiobookClassHeader.h"
 #include "MagazineClassHeader.h"
-//#include "BaseMediaClassMethods.cpp"
-//#include "AudiobookClassMethods.cpp"
+#include "MovieClassHeader.h"
 using namespace std;
 
 int main()
 {
     ifstream fin;
     fin.open("Input.txt");
-
-    //number of that type of media
-    int index = 0;
 
     string type;
     Type option;
@@ -28,14 +24,14 @@ int main()
     string genre;
     string available;
     int issue;
+    string actor1;
+    string actor2;
+    string director;
 
-    //vector of vectors where each vector is a type of media
-    //[0][i] holds books where [1][i] holds audiobooks
-    //vector <vector<BaseMedia>> Library;
-
+    //vectors holding pieces of media
     vector<AudiobookClass> audiobooks;
     vector<MagazineClass> magazines;
-
+    vector<MovieClass> movies;
 
     while (!fin.eof())
     {
@@ -80,8 +76,6 @@ int main()
             }
 
             audiobooks.push_back(newAudiobook);
-            //Library[1][index] = newAudiobook;
-            index++;
         }
         else if (type == "Magazine")
         {
@@ -122,6 +116,39 @@ int main()
         else if (type == "Movie")
         {
             option = Movie;
+            fin.get();
+            getline(fin, name, ',');
+            fin.get();
+            fin >> length;
+            fin.get();
+            fin.get();
+            getline(fin, date, ',');
+            fin.get();
+            fin >> id;
+            fin.get();
+            fin.get();
+            getline(fin, director, ',');
+            fin.get();
+            getline(fin, actor1, ',');
+            fin.get();
+            getline(fin, actor2, ',');
+            fin.get();
+            getline(fin, genre, ',');
+            fin.get();
+            getline(fin, available, '\n');
+
+            MovieClass newMovie(option, name, length, date, id, actor1, actor2, director, genre);
+
+            if (available == "available")
+            {
+                newMovie.setAvailable(true);
+            }
+            else if (available == "checked out")
+            {
+                newMovie.setAvailable(false);
+            }
+
+            movies.push_back(newMovie);
         }
         else if (type == "Album")
         {
@@ -129,12 +156,6 @@ int main()
         }
     }
     fin.close();
-
-
-    /*for (int i = 0; i < 1; i++)
-    {
-        cout << Library[1][i].getName() << " " << Library[1][i].getLength() << endl;
-    }*/
 
     cout << endl << "Type Name Length Date ID Author Narrator Genre Availability" << endl;
     for (int i = 0; i < audiobooks.size(); i++)
@@ -174,7 +195,24 @@ int main()
         }
     }
 
+    cout << endl << "Type Name Length Date ID Director Lead Actor 1 Lead Actor 2 Genre Availability" << endl;
+    for (int i = 0; i < movies.size(); i++)
+    {
+        name = movies[i].getName();
+        id = movies[i].getID();
 
+        cout << "Movie" << " " << name << " " << movies[i].getLength() << " ";
+        cout << movies[i].getDate() << " " << id << " " << movies[i].getDirector() << " ";
+        cout << movies[i].getActor1() << " " << movies[i].getActor2() << " " << movies[i].getGenre() << " ";
+        if (movies[i].isAvailable())
+        {
+            cout << "Available" << endl;
+        }
+        else
+        {
+            cout << "Checked Out" << endl;
+        }
+    }
 
     return 0;
 }
