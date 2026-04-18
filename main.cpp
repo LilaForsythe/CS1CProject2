@@ -37,8 +37,11 @@ int main()
     vector<MagazineClass> magazines;
     vector<MovieClass> movies;
 
-    while (getline(fin, type, ','))
+   while (!fin.eof())
     {
+        //reading in type
+        getline(fin, type, ',');
+        
         // added the book section to already created main
         if (type == "Book")
         {
