@@ -7,7 +7,7 @@ MovieClass::MovieClass()
 
 
 
-MovieClass::MovieClass(Type type, string name, double length, string date, int id, string actor1, string actor2, string director, string genre)
+MovieClass::MovieClass(Type type, string name, double length, int date, int id, string actor1, string actor2, string director, string genre)
 {
     setType(type);
     setName(name);
@@ -52,4 +52,28 @@ string MovieClass::getDirector()
 void MovieClass::setDirector(string director)
 {
     this -> director = director;
+}
+
+void MovieClass::displayMediaInfo()
+{
+    cout << "Movie " << "| " << setw(20) << this->getName() << "| ";
+
+    int hrs = 0;
+    int mins = 0;
+    this->setLength(this->getLength()+0.0001);
+    hrs = this->getLength();
+    mins = (int(this->getLength() * 100)) % 100;
+
+    cout << hrs << " hours & " << setw(2) << mins << " minutes" << " | " << this->getDate() << " | ";
+    cout << setw(2) << this->getID() << " | " << setw(15) << director << "| " << setw(15);
+    cout << actor1 << "| " << setw(15) << actor2 << "| " << setw(15) << this->getGenre() << "| ";
+
+    if (isAvailable())
+    {
+        cout << "Available" << endl;
+    }
+    else
+    {
+        cout << "Checked Out" << endl;
+    }
 }

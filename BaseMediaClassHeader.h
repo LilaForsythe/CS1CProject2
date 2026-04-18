@@ -2,14 +2,9 @@
 #define BASEMEDIACLASSHEADER_H
 #include <string>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-struct Date
-{
-    int year;
-    int month;
-    int day;
-};
 enum Type
 {
     Book,
@@ -22,7 +17,7 @@ class BaseMedia
 {
     public:
     BaseMedia();
-    BaseMedia(Type type, string name, double length, string date, int id, string author, string genre);
+    BaseMedia(Type type, string name, double length, int date, int id, string author, string genre);
     ~BaseMedia();
 
     string getName();     //Returns the name of the media
@@ -34,8 +29,8 @@ class BaseMedia
     double getLength();
     void setLength(double length);
 
-    string getDate();
-    void setDate(string date);
+    int getDate();
+    void setDate(int date);
 
     int getID();
     void setID(int id);
@@ -49,17 +44,16 @@ class BaseMedia
     bool isAvailable();
     void setAvailable(bool available);
 
-    //virtual void displayMediaInfo() = 0;
+    virtual void displayMediaInfo() = 0;
 
 private:
     string name = "";
     Type mediaType;
     double length = 0.0;
-    string date;
-    //Date date = {0,0,0};
+    int date = 0;
     int ID = 0;
     string author = "";
     string genre = "";
-    bool available = true;
+    bool available = false;
 };
 #endif

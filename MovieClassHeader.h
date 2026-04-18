@@ -6,7 +6,7 @@ class MovieClass: public BaseMedia
 {
 public:
     MovieClass();
-    MovieClass(Type type, string name, double length, string date, int id, string actor1, string actor2, string director, string genre);
+    MovieClass(Type type, string name, double length, int date, int id, string actor1, string actor2, string director, string genre);
     ~MovieClass();
 
     string getDirector();
@@ -16,17 +16,18 @@ public:
     string getActor2();
     void setActor2(string actor2);
 
+    virtual void displayMediaInfo();
 private:
-    string director;
+    string director = "";
     Type type;
-    string name;
-    double length;
-    string date;
-    int ID;
-    string actor1;
-    string actor2;
-    string genre;
-    bool available;
+    string name = "";
+    double length = 0.0;
+    int date = 0;
+    int ID = 0;
+    string actor1 = "";
+    string actor2 = "";
+    string genre = "";
+    bool available = false;
 };
 
 #endif

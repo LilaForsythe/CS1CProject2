@@ -4,7 +4,7 @@ BaseMedia::BaseMedia()
     
 }
 
-BaseMedia::BaseMedia(Type type, string name, double length, string date, int id, string author, string genre)
+BaseMedia::BaseMedia(Type type, string name, double length, int date, int id, string author, string genre)
 {
     setType(type);
     setName(name);
@@ -49,11 +49,11 @@ void BaseMedia::setLength(double length)
     this->length = length;
 }
 
-string BaseMedia::getDate()
+int BaseMedia::getDate()
 {
     return date;
 }
-void BaseMedia::setDate(string date)
+void BaseMedia::setDate(int date)
 {
     this->date = date;
 }

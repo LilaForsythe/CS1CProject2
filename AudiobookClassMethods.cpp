@@ -5,7 +5,7 @@ AudiobookClass::AudiobookClass()
 }
 
 
-AudiobookClass::AudiobookClass(Type type, string name, double length, string date, int id, string author, string narrator, string genre)
+AudiobookClass::AudiobookClass(Type type, string name, double length, int date, int id, string author, string narrator, string genre)
 {
     setType(type);
     setName(name);
@@ -28,4 +28,27 @@ string AudiobookClass::getNarrator()
 void AudiobookClass::setNarrator(string narrator)
 {
     this->narrator = narrator;
+}
+
+void AudiobookClass::displayMediaInfo()
+{
+    cout << "Audiobook " << "| " << setw(20) << this->getName() << "| ";
+
+    int hrs = 0;
+    int mins = 0;
+    hrs = this->getLength();
+    mins = (int(this->getLength() * 100)) % 100;
+
+    cout << setw(2) << hrs << " hours & " << mins << " minutes" << " | " << this->getDate() << " | ";
+    cout << setw(2) << this->getID() << " | " << setw(15) << this->getAuthor() << "| ";
+    cout << setw(15) << narrator << "| " << setw(10) << this->getGenre() << "| ";
+
+    if (isAvailable())
+    {
+        cout << "Available" << endl;
+    }
+    else
+    {
+        cout << "Checked Out" << endl;
+    }
 }

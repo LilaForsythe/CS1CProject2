@@ -17,7 +17,7 @@ int main()
     Type option;
     string name;
     double length;
-    string date;
+    int date;
     int id;
     string author;
     string narrator;
@@ -51,7 +51,7 @@ int main()
             fin >> length;
             fin.get();
             fin.get();
-            getline(fin, date, ',');
+            fin >> date;
             fin.get();
             fin >> id;
             fin.get();
@@ -86,7 +86,8 @@ int main()
             fin >> length;
             fin.get();
             fin.get();
-            getline(fin, date, ',');
+            fin >> date;
+            fin.get();
             fin.get();
             fin >> id;
             fin.get();
@@ -122,7 +123,8 @@ int main()
             fin >> length;
             fin.get();
             fin.get();
-            getline(fin, date, ',');
+            fin >> date;
+            fin.get();
             fin.get();
             fin >> id;
             fin.get();
@@ -157,61 +159,45 @@ int main()
     }
     fin.close();
 
-    cout << endl << "Type Name Length Date ID Author Narrator Genre Availability" << endl;
+    //eventually the manager class will do this
+    //display all audiobooks
+    //displaying the header
+    cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " <<setw(22) << "Length";
+    cout << "| " << "Date" << " | " << "ID" << " | " << setw(15) << "Author" << "| " << setw(15) << "Narrator";
+    cout << "| " << setw(10) << "Genre" << "| " << setw(12) << "Availability" << endl;
+    cout << setfill('-') << setw(129) << "" << endl << setfill(' ');
+
+    //displaying the media
     for (int i = 0; i < audiobooks.size(); i++)
     {
-        name = audiobooks[i].getName();
-        id = audiobooks[i].getID();
-
-        cout << "Audiobook" << " " << name << " " << audiobooks[i].getLength() << " ";
-        cout << audiobooks[i].getDate() << " " << id << " " << audiobooks[i].getAuthor() << " ";
-        cout << audiobooks[i].getNarrator() << " " << audiobooks[i].getGenre() << " ";
-        if (audiobooks[i].isAvailable())
-        {
-            cout << "Available" << endl;
-        }
-        else
-        {
-            cout << "Checked Out" << endl;
-        }
+        audiobooks[i].displayMediaInfo();
     }
 
-    cout << endl << "Type Name Length Date ID Author Issue Genre Availability" << endl;
+    //display all magazines
+    //displaying the header
+    cout << endl << left << setw(8) << "Type" << " | " << setw(30) << "Name" << "| " <<setw(10) << "Length";
+    cout << "| " << "Date" << " | " << "ID" << " | " << setw(20) << "Author" << "| " << "Issue";
+    cout << " | " << setw(10) << "Genre" << "| " << setw(12) << "Availability" << endl;
+    cout << setfill('-') << setw(122) << "" << endl << setfill(' ');
+
+    //displaying the media
     for (int i = 0; i < magazines.size(); i++)
     {
-        name = magazines[i].getName();
-        id = magazines[i].getID();
-
-        cout << "Magazine" << " " << name << " " << magazines[i].getLength() << " ";
-        cout << magazines[i].getDate() << " " << id << " " << magazines[i].getAuthor() << " ";
-        cout << magazines[i].getIssue() << " " << magazines[i].getGenre() << " ";
-        if (magazines[i].isAvailable())
-        {
-            cout << "Available" << endl;
-        }
-        else
-        {
-            cout << "Checked Out" << endl;
-        }
+        magazines[i].displayMediaInfo();
     }
 
-    cout << endl << "Type Name Length Date ID Director Lead Actor 1 Lead Actor 2 Genre Availability" << endl;
+    //display all movies
+    //displaying the header
+    cout << endl << left << setw(6) << "Type" << "| " << setw(20) << "Name" << "| " <<setw(21) << "Length";
+    cout << "| " << "Date" << " | " << "ID" << " | " << setw(15) << "Director" << "| " << setw(15) << "Lead 1";
+    cout << "| " << setw(15) << "Lead 2" << "| " << setw(15) << "Genre" << "| " << setw(12);
+    cout << "Availability" << endl;
+    cout << setfill('-') << setw(147) << "" << endl << setfill(' ');
+
+    //displaying the media
     for (int i = 0; i < movies.size(); i++)
     {
-        name = movies[i].getName();
-        id = movies[i].getID();
-
-        cout << "Movie" << " " << name << " " << movies[i].getLength() << " ";
-        cout << movies[i].getDate() << " " << id << " " << movies[i].getDirector() << " ";
-        cout << movies[i].getActor1() << " " << movies[i].getActor2() << " " << movies[i].getGenre() << " ";
-        if (movies[i].isAvailable())
-        {
-            cout << "Available" << endl;
-        }
-        else
-        {
-            cout << "Checked Out" << endl;
-        }
+        movies[i].displayMediaInfo();
     }
 
     return 0;
