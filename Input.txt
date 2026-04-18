@@ -1,0 +1,9 @@
+Audiobook, Harry Potter, 10.57, 1997, 2, J. K. Rowling, Jim Dale, Fantasy, available
+Magazine, name, 150, 2022, 3, publisher, 4, Fashion, available
+Movie, name, 2.30, 2024, 4, director, actor1, actor2, genre, available
+Audiobook, Project Hail Mary, 16.10, 2021, 7, Andy Weir, Ray Porter, Sci-Fi, available
+Magazine, Mysteries of The Solar System, 108, 2016, 8, National Geographic, 6, Science, available
+Movie, name, 2.01, 2007, 9, director, actor1, actor2, genre, available
+Audiobook, Atomic Habits, 5.35, 2018, 12, James Clear, James Clear, Self-Help, available
+Magazine, name, 120, 2020, 13, publisher, 11, genre, available
+Movie, name, 2.23, 2018, 14, director, actor1, actor2, genre, available
