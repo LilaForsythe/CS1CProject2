@@ -108,16 +108,24 @@ bool LibraryManager::checkAvailability(int id)
 void LibraryManager::displayAllMedia()
 {
     cout << "\n**************** ALL MEDIA ****************\n";
+
     for (int i = 0; i < mediaList.size(); i++)
     {
-        mediaList[i]->displayMediaInfo();
+        try
+        {
+            mediaList[i]->displayMediaInfo();
+        }
+        catch (const BorrowedException& e)
+        {
+            cout << mediaList[i]->getName() << " - " << e.what() << endl;
+        }
     }
 }
 
 void LibraryManager::displayAvailableMedia()
 {
     cout << "\n**************** AVAILABLE MEDIA ****************\n";
-    
+
     cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(10) << "Length";
     cout << "| " << "Date" << " | " << "ID" << " | " << setw(15) << "Author";
     cout << "| " << setw(10) << "Genre" << "| " << setw(12) << "Availability" << endl;
@@ -127,7 +135,14 @@ void LibraryManager::displayAvailableMedia()
     {
         if (mediaList[i]->isAvailable())
         {
-            mediaList[i]->displayMediaInfo();
+            try
+            {
+                mediaList[i]->displayMediaInfo();
+            }
+            catch (const BorrowedException& e)
+            {
+                cout << mediaList[i]->getName() << " - " << e.what() << endl;
+            }
         }
     }
 }
@@ -135,20 +150,21 @@ void LibraryManager::displayAvailableMedia()
 void LibraryManager::displayCheckedOutMedia()
 {
     cout << "\n**************** CHECKED OUT MEDIA ****************\n";
-   
-    cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(10) << "Length";
-    cout << "| " << "Date" << " | " << "ID" << " | " << setw(15) << "Author";
-    cout << "| " << setw(10) << "Genre" << "| " << setw(12) << "Availability" << endl;
-    cout << setfill('-') << setw(105) << "" << endl << setfill(' ');
 
     for (int i = 0; i < mediaList.size(); i++)
     {
         if (!mediaList[i]->isAvailable())
         {
-            mediaList[i]->displayMediaInfo();
+            try
+            {
+                mediaList[i]->displayMediaInfo();
+            }
+            catch (const BorrowedException& e)
+            {
+                cout << mediaList[i]->getName() << " - " << e.what() << endl;
+            }
         }
     }
-
 }
 
 void LibraryManager::displayNumberOfEachType()
@@ -217,7 +233,7 @@ void LibraryManager::loadFromFile(const string& fileName)
 
     if (!fin)
     {
-        throw "Error: could not open input file.";
+        throw FileOpenException(fileName);
     }
 
     string line;
@@ -248,69 +264,85 @@ void LibraryManager::loadFromFile(const string& fileName)
 
         string type = fields[0];
 
-        if (type == "Book" && fields.size() >= 8)
+        try
         {
-            BookClass* newBook = new BookClass(
-                Book,
-                fields[1],
-                stod(fields[2]),
-                stoi(fields[3]),
-                stoi(fields[4]),
-                fields[5],
-                fields[6]
-            );
+            if (type == "Book" && fields.size() >= 8)
+            {
+                BookClass* newBook = new BookClass(
+                    Book,
+                    fields[1],
+                    stod(fields[2]),
+                    stoi(fields[3]),
+                    stoi(fields[4]),
+                    fields[5],
+                    fields[6]
+                );
 
-            newBook->setAvailable(fields[7] == "available");
-            addItem(newBook);
+                newBook->setAvailable(fields[7] == "available");
+                addItem(newBook);
+            }
+            else if (type == "Audiobook" && fields.size() >= 9)
+            {
+                AudiobookClass* newAudiobook = new AudiobookClass(
+                    Audiobook,
+                    fields[1],
+                    stod(fields[2]),
+                    stoi(fields[3]),
+                    stoi(fields[4]),
+                    fields[5],
+                    fields[6],
+                    fields[7]
+                );
+
+                newAudiobook->setAvailable(fields[8] == "available");
+                addItem(newAudiobook);
+            }
+            else if (type == "Magazine" && fields.size() >= 9)
+            {
+                MagazineClass* newMagazine = new MagazineClass(
+                    Magazine,
+                    fields[1],
+                    stod(fields[2]),
+                    stoi(fields[3]),
+                    stoi(fields[4]),
+                    fields[5],
+                    stoi(fields[6]),
+                    fields[7]
+                );
+
+                newMagazine->setAvailable(fields[8] == "available");
+                addItem(newMagazine);
+            }
+            else if (type == "Movie" && fields.size() >= 10)
+            {
+                MovieClass* newMovie = new MovieClass(
+                    Movie,
+                    fields[1],
+                    stod(fields[2]),
+                    stoi(fields[3]),
+                    stoi(fields[4]),
+                    fields[6],
+                    fields[7],
+                    fields[5],
+                    fields[8]
+                );
+
+                newMovie->setAvailable(fields[9] == "available");
+                addItem(newMovie);
+            }
+            else if (type == "Album")
+            {
+                // skip albums for now since no Album class is implemented
+                continue;
+            }
+            else
+            {
+                throw MediaTypeException(type);
+            }
         }
-        else if (type == "Audiobook" && fields.size() >= 9)
+        catch (const MediaTypeException& t)
         {
-            AudiobookClass* newAudiobook = new AudiobookClass(
-                Audiobook,
-                fields[1],
-                stod(fields[2]),
-                stoi(fields[3]),
-                stoi(fields[4]),
-                fields[5],
-                fields[6],
-                fields[7]
-            );
-
-            newAudiobook->setAvailable(fields[8] == "available");
-            addItem(newAudiobook);
-        }
-        else if (type == "Magazine" && fields.size() >= 9)
-        {
-            MagazineClass* newMagazine = new MagazineClass(
-                Magazine,
-                fields[1],
-                stod(fields[2]),
-                stoi(fields[3]),
-                stoi(fields[4]),
-                fields[5],
-                stoi(fields[6]),
-                fields[7]
-            );
-
-            newMagazine->setAvailable(fields[8] == "available");
-            addItem(newMagazine);
-        }
-        else if (type == "Movie" && fields.size() >= 10)
-        {
-            MovieClass* newMovie = new MovieClass(
-                Movie,
-                fields[1],
-                stod(fields[2]),
-                stoi(fields[3]),
-                stoi(fields[4]),
-                fields[6],   // actor1
-                fields[7],   // actor2
-                fields[5],   // director
-                fields[8]    // genre
-            );
-
-            newMovie->setAvailable(fields[9] == "available");
-            addItem(newMovie);
+            cout << t.what() << "Skipping this library entry.\n";
         }
     }
 

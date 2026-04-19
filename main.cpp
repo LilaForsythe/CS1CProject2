@@ -2,7 +2,6 @@
 #include <string>
 #include <fstream>
 #include <vector>
-
 #include "BaseMediaClassHeader.h"
 #include "AudiobookClassHeader.h"
 #include "MagazineClassHeader.h"
@@ -15,6 +14,11 @@ int main()
 {
     ifstream fin;
     fin.open("Input.txt");
+
+    if (!fin)
+    {
+        throw FileOpenException("Input.txt");
+    }
 
     string type;
     Type option;
@@ -37,191 +41,210 @@ int main()
     vector<MagazineClass> magazines;
     vector<MovieClass> movies;
 
-	// manager class object - (change comment description)
+	// manager class object 
 	LibraryManager manager;
 
 
     while (!fin.eof())
     {
-        //reading in type
-        getline(fin, type, ',');
-
-        // added the book section to already created main
-        if (type == "Book")
+        try
         {
-            option = Book;
-            fin.get();
-            getline(fin, name, ',');
-            fin.get();
-            fin >> length;
-            fin.get();
-            fin.get();
-            fin >> date;
-            fin.get();
-            fin.get();
-            fin >> id;
-            fin.get();
-            fin.get();
-            getline(fin, author, ',');
-            fin.get();
-            getline(fin, genre, ',');
-            fin.get();
-            getline(fin, available, '\n');
+            //reading in type
+            getline(fin, type, ',');
 
-            BookClass newBook(option, name, length, date, id, author, genre);
-
-            if (available == "available")
+            if (fin.fail())
             {
-                newBook.setAvailable(true);
-            }
-            else if (available == "checked out")
-            {
-                newBook.setAvailable(false);
+                break;
             }
 
-			// add book to manager polymorphically
-            books.push_back(newBook);
-            BookClass* bookPtr = new BookClass(option, name, length, date, id, author, genre);
-            bookPtr->setAvailable(newBook.isAvailable());
-            manager.addItem(bookPtr);
+            // added the book section to already created main
+            if (type == "Book")
+            {
+                option = Book;
+                fin.get();
+                getline(fin, name, ',');
+                fin.get();
+                fin >> length;
+                fin.get();
+                fin.get();
+                fin >> date;
+                fin.get();
+                fin.get();
+                fin >> id;
+                fin.get();
+                fin.get();
+                getline(fin, author, ',');
+                fin.get();
+                getline(fin, genre, ',');
+                fin.get();
+                getline(fin, available, '\n');
 
+                BookClass newBook(option, name, length, date, id, author, genre);
+
+                if (available == "available")
+                {
+                    newBook.setAvailable(true);
+                }
+                else if (available == "checked out")
+                {
+                    newBook.setAvailable(false);
+                }
+
+                // add book to manager polymorphically
+                books.push_back(newBook);
+                BookClass* bookPtr = new BookClass(option, name, length, date, id, author, genre);
+                bookPtr->setAvailable(newBook.isAvailable());
+                manager.addItem(bookPtr);
+
+            }
+            else if (type == "Audiobook")
+            {
+                option = Audiobook;
+                fin.get();
+                getline(fin, name, ',');
+                fin.get();
+                fin >> length;
+                fin.get();
+                fin.get();
+                fin >> date;
+                fin.get();
+                fin >> id;
+                fin.get();
+                fin.get();
+                getline(fin, author, ',');
+                fin.get();
+                getline(fin, narrator, ',');
+                fin.get();
+                getline(fin, genre, ',');
+                fin.get();
+                getline(fin, available, '\n');
+
+                AudiobookClass newAudiobook(option, name, length, date, id, author, narrator, genre);
+
+                if (available == "available")
+                {
+                    newAudiobook.setAvailable(true);
+                }
+                else if (available == "checked out")
+                {
+                    newAudiobook.setAvailable(false);
+                }
+
+                audiobooks.push_back(newAudiobook);
+
+                // add to manager polymorphically
+                AudiobookClass* audiobookPtr = new AudiobookClass(option, name, length, date, id, author, narrator, genre);
+                audiobookPtr->setAvailable(newAudiobook.isAvailable());
+                manager.addItem(audiobookPtr);
+
+            }
+            else if (type == "Magazine")
+            {
+                option = Magazine;
+                fin.get();
+                getline(fin, name, ',');
+                fin.get();
+                fin >> length;
+                fin.get();
+                fin.get();
+                fin >> date;
+                fin.get();
+                fin.get();
+                fin >> id;
+                fin.get();
+                fin.get();
+                getline(fin, author, ',');
+                fin.get();
+                fin >> issue;
+                fin.get();
+                fin.get();
+                getline(fin, genre, ',');
+                fin.get();
+                getline(fin, available, '\n');
+
+                MagazineClass newMagazine(option, name, length, date, id, author, issue, genre);
+
+                if (available == "available")
+                {
+                    newMagazine.setAvailable(true);
+                }
+                else if (available == "checked out")
+                {
+                    newMagazine.setAvailable(false);
+                }
+
+                magazines.push_back(newMagazine);
+
+                // add to manager polymorphically
+                MagazineClass* magazinePtr = new MagazineClass(option, name, length, date, id, author, issue, genre);
+                magazinePtr->setAvailable(newMagazine.isAvailable());
+                manager.addItem(magazinePtr);
+            }
+            else if (type == "Movie")
+            {
+                option = Movie;
+                fin.get();
+                getline(fin, name, ',');
+                fin.get();
+                fin >> length;
+                fin.get();
+                fin.get();
+                fin >> date;
+                fin.get();
+                fin.get();
+                fin >> id;
+                fin.get();
+                fin.get();
+                getline(fin, director, ',');
+                fin.get();
+                getline(fin, actor1, ',');
+                fin.get();
+                getline(fin, actor2, ',');
+                fin.get();
+                getline(fin, genre, ',');
+                fin.get();
+                getline(fin, available, '\n');
+
+                MovieClass newMovie(option, name, length, date, id, actor1, actor2, director, genre);
+
+                if (available == "available")
+                {
+                    newMovie.setAvailable(true);
+                }
+                else if (available == "checked out")
+                {
+                    newMovie.setAvailable(false);
+                }
+
+                movies.push_back(newMovie);
+
+                // add to manager polymorphically
+                MovieClass* moviePtr = new MovieClass(option, name, length, date, id, actor1, actor2, director, genre);
+                moviePtr->setAvailable(newMovie.isAvailable());
+                manager.addItem(moviePtr);
+            }
+            else if (type == "Album")
+            {
+                option = Album;
+                getline(fin, available, '\n');
+            }
+            else
+            {
+                throw MediaTypeException(type);
+            }
         }
-        else if (type == "Audiobook")
+        catch (const MediaTypeException& t)
         {
-            option = Audiobook;
-            fin.get();
-            getline(fin, name, ',');
-            fin.get();
-            fin >> length;
-            fin.get();
-            fin.get();
-            fin >> date;
-            fin.get();
-            fin >> id;
-            fin.get();
-            fin.get();
-            getline(fin, author, ',');
-            fin.get();
-            getline(fin, narrator, ',');
-            fin.get();
-            getline(fin, genre, ',');
-            fin.get();
-            getline(fin, available, '\n');
+            cout << t.what() << "Skipping this library entry.\n";
 
-            AudiobookClass newAudiobook(option, name, length, date, id, author, narrator, genre);
-
-            if (available == "available")
-            {
-                newAudiobook.setAvailable(true);
-            }
-            else if (available == "checked out")
-            {
-                newAudiobook.setAvailable(false);
-            }
-
-            audiobooks.push_back(newAudiobook);
-
-            // add to manager polymorphically
-            AudiobookClass* audiobookPtr = new AudiobookClass(option, name, length, date, id, author, narrator, genre);
-            audiobookPtr->setAvailable(newAudiobook.isAvailable());
-            manager.addItem(audiobookPtr);
-
+            // discards the line and continues the program prevents
+            // it from terminating after the exception is thrown
+            getline(fin, type);
+            continue;
         }
-        else if (type == "Magazine")
-        {
-            option = Magazine;
-            fin.get();
-            getline(fin, name, ',');
-            fin.get();
-            fin >> length;
-            fin.get();
-            fin.get();
-            fin >> date;
-            fin.get();
-            fin.get();
-            fin >> id;
-            fin.get();
-            fin.get();
-            getline(fin, author, ',');
-            fin.get();
-            fin >> issue;
-            fin.get();
-            fin.get();
-            getline(fin, genre, ',');
-            fin.get();
-            getline(fin, available, '\n');
 
-            MagazineClass newMagazine(option, name, length, date, id, author, issue, genre);
-
-            if (available == "available")
-            {
-                newMagazine.setAvailable(true);
-            }
-            else if (available == "checked out")
-            {
-                newMagazine.setAvailable(false);
-            }
-
-            magazines.push_back(newMagazine);
-
-            // add to manager polymorphically
-            MagazineClass* magazinePtr = new MagazineClass(option, name, length, date, id, author, issue, genre);
-            magazinePtr->setAvailable(newMagazine.isAvailable());
-            manager.addItem(magazinePtr);
-        }
-        else if (type == "Movie")
-        {
-            option = Movie;
-            fin.get();
-            getline(fin, name, ',');
-            fin.get();
-            fin >> length;
-            fin.get();
-            fin.get();
-            fin >> date;
-            fin.get();
-            fin.get();
-            fin >> id;
-            fin.get();
-            fin.get();
-            getline(fin, director, ',');
-            fin.get();
-            getline(fin, actor1, ',');
-            fin.get();
-            getline(fin, actor2, ',');
-            fin.get();
-            getline(fin, genre, ',');
-            fin.get();
-            getline(fin, available, '\n');
-
-            MovieClass newMovie(option, name, length, date, id, actor1, actor2, director, genre);
-
-            if (available == "available")
-            {
-                newMovie.setAvailable(true);
-            }
-            else if (available == "checked out")
-            {
-                newMovie.setAvailable(false);
-            }
-
-            movies.push_back(newMovie);
-
-            // add to manager polymorphically
-            MovieClass* moviePtr = new MovieClass(option, name, length, date, id, actor1, actor2, director, genre);
-            moviePtr->setAvailable(newMovie.isAvailable());
-            manager.addItem(moviePtr);
-        }
-        else if (type == "Album")
-        {
-            option = Album;
-            getline(fin, available, '\n');
-        }
-        else
-        {
-            getline(fin, available, '\n');
-        }
     }
+
     fin.close();
 
     //display all books :)
@@ -232,7 +255,14 @@ int main()
 
     for (int i = 0; i < books.size(); i++)
     {
-        books[i].displayMediaInfo();
+        try
+        {
+            books[i].displayMediaInfo();
+        }
+        catch (const BorrowedException& book)
+        {
+            cout << book.what() << endl;
+        }
     }
 
     //display all audiobooks
@@ -243,7 +273,14 @@ int main()
 
     for (int i = 0; i < audiobooks.size(); i++)
     {
-        audiobooks[i].displayMediaInfo();
+        try
+        {
+            audiobooks[i].displayMediaInfo();
+        }
+        catch (const BorrowedException& audiobook)
+        {
+            cout << audiobook.what() << endl;
+        }
     }
 
     //display all magazines
@@ -254,7 +291,14 @@ int main()
 
     for (int i = 0; i < magazines.size(); i++)
     {
-        magazines[i].displayMediaInfo();
+        try
+        {
+            magazines[i].displayMediaInfo();
+        }
+        catch (const BorrowedException& magz)
+        {
+            cout << magz.what() << endl;
+        }
     }
 
     //display all movies
@@ -266,27 +310,41 @@ int main()
 
     for (int i = 0; i < movies.size(); i++)
     {
-        movies[i].displayMediaInfo();
+        try
+        {
+            movies[i].displayMediaInfo();
+        }
+        catch (const BorrowedException& mov)
+        {
+            cout << mov.what() << endl;
+        }
     }
 
     cout << "\n\n**************** MANAGER CLASS DEMO ****************\n";
 
     manager.displayNumberOfEachType();
 
-    try
-    {
-        cout << "\nSearching for Dune...\n";
-        BaseMedia* found = manager.searchByName("Dune");
+    cout << "\nSearching for Dune...\n";
+    BaseMedia* found = manager.searchByName("Dune");
 
-        if (found != nullptr)
+    if (found != nullptr)
+    {
+        try
         {
             found->displayMediaInfo();
         }
-        else
+        catch (const BorrowedException& e)
         {
-            cout << "Dune not found." << endl;
+            cout << found->getName() << " - " << e.what() << endl;
         }
+    }
+    else
+    {
+        cout << "Dune not found." << endl;
+    }
 
+    try
+    {
         cout << "\nChecking out item ID 1...\n";
         manager.checkOutItem(1);
 
