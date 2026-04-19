@@ -74,6 +74,6 @@ void MovieClass::displayMediaInfo()
     }
     else
     {
-        cout << "Checked Out" << endl;
+        throw BorrowedException("Movie");
     }
 }

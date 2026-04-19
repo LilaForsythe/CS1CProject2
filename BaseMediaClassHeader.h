@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include "ExceptionsClassHeader.h"
 using namespace std;
 
 enum Type
