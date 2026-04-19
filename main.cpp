@@ -7,15 +7,15 @@
 #include "MagazineClassHeader.h"
 #include "MovieClassHeader.h"
 #include "BookClassHeader.h"
+#include "LibraryManagerClassHeader.h"
 using namespace std;
 
 int main()
 {
-    
     ifstream fin;
     fin.open("Input.txt");
 
-    if(!fin)
+    if (!fin)
     {
         throw FileOpenException("Input.txt");
     }
@@ -41,13 +41,22 @@ int main()
     vector<MagazineClass> magazines;
     vector<MovieClass> movies;
 
+	// manager class object 
+	LibraryManager manager;
+
+
     while (!fin.eof())
     {
         try
         {
             //reading in type
             getline(fin, type, ',');
-            
+
+            if (fin.fail())
+            {
+                break;
+            }
+
             // added the book section to already created main
             if (type == "Book")
             {
@@ -81,7 +90,12 @@ int main()
                     newBook.setAvailable(false);
                 }
 
+                // add book to manager polymorphically
                 books.push_back(newBook);
+                BookClass* bookPtr = new BookClass(option, name, length, date, id, author, genre);
+                bookPtr->setAvailable(newBook.isAvailable());
+                manager.addItem(bookPtr);
+
             }
             else if (type == "Audiobook")
             {
@@ -117,6 +131,12 @@ int main()
                 }
 
                 audiobooks.push_back(newAudiobook);
+
+                // add to manager polymorphically
+                AudiobookClass* audiobookPtr = new AudiobookClass(option, name, length, date, id, author, narrator, genre);
+                audiobookPtr->setAvailable(newAudiobook.isAvailable());
+                manager.addItem(audiobookPtr);
+
             }
             else if (type == "Magazine")
             {
@@ -154,6 +174,11 @@ int main()
                 }
 
                 magazines.push_back(newMagazine);
+
+                // add to manager polymorphically
+                MagazineClass* magazinePtr = new MagazineClass(option, name, length, date, id, author, issue, genre);
+                magazinePtr->setAvailable(newMagazine.isAvailable());
+                manager.addItem(magazinePtr);
             }
             else if (type == "Movie")
             {
@@ -192,6 +217,11 @@ int main()
                 }
 
                 movies.push_back(newMovie);
+
+                // add to manager polymorphically
+                MovieClass* moviePtr = new MovieClass(option, name, length, date, id, actor1, actor2, director, genre);
+                moviePtr->setAvailable(newMovie.isAvailable());
+                manager.addItem(moviePtr);
             }
             else if (type == "Album")
             {
@@ -212,8 +242,9 @@ int main()
             getline(fin, type);
             continue;
         }
+
     }
-   
+
     fin.close();
 
     //display all books :)
@@ -288,6 +319,49 @@ int main()
             cout << mov.what() << endl;
         }
     }
+
+    cout << "\n\n**************** MANAGER CLASS DEMO ****************\n";
+
+    manager.displayNumberOfEachType();
+
+    cout << "\nSearching for Dune...\n";
+    BaseMedia* found = manager.searchByName("Dune");
+
+    if (found != nullptr)
+    {
+        try
+        {
+            found->displayMediaInfo();
+        }
+        catch (const BorrowedException& e)
+        {
+            cout << found->getName() << " - " << e.what() << endl;
+        }
+    }
+    else
+    {
+        cout << "Dune not found." << endl;
+    }
+
+    try
+    {
+        cout << "\nChecking out item ID 1...\n";
+        manager.checkOutItem(1);
+
+        cout << "Returning item ID 1...\n";
+        manager.returnItem(1);
+
+        cout << "\nDisplaying available media...\n";
+        manager.displayAvailableMedia();
+
+        cout << "\nDisplaying checked out media...\n";
+        manager.displayCheckedOutMedia();
+    }
+    catch (const char* errorMessage)
+    {
+        cout << errorMessage << endl;
+    }
+
 
     return 0;
 }
