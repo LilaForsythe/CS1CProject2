@@ -9,3 +9,4 @@ Movie, name, 2.01, 2007, 9, director, actor1, actor2, genre, available
 Audiobook, Atomic Habits, 5.35, 2018, 12, James Clear, James Clear, Self-Help, available
 Magazine, name, 120, 2020, 13, publisher, 11, genre, available
 Movie, name, 2.23, 2018, 14, director, actor1, actor2, genre, available
+Game, Minecraft, 100, 2011, 23, Mojang, Sandbox, available

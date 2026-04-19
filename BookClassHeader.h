@@ -1,7 +1,7 @@
 #ifndef CS1CPROJECT2_BOOKCLASS_H
 #define CS1CPROJECT2_BOOKCLASS_H
 
-#include "BaseMediaClass.h"
+#include "BaseMediaClassHeader.h"
 
 class BookClass : public BaseMedia
 {

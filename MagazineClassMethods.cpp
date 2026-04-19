@@ -43,6 +43,6 @@ void MagazineClass::displayMediaInfo()
     }
     else
     {
-        cout << "Checked Out" << endl;
+        throw BorrowedException("Magazine");
     }
 }

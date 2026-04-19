@@ -1,4 +1,4 @@
-#include "BookClass.h"
+#include "BookClassHeader.h"
 
 BookClass::BookClass()
 {
@@ -31,5 +31,5 @@ void BookClass::displayMediaInfo()
     if (isAvailable())
         cout << "Available" << endl;
     else
-        cout << "Checked Out" << endl;
+        throw BorrowedException("Book");
 }

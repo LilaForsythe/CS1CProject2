@@ -49,6 +49,6 @@ void AudiobookClass::displayMediaInfo()
     }
     else
     {
-        cout << "Checked Out" << endl;
+        throw BorrowedException("Audiobook");
     }
 }
