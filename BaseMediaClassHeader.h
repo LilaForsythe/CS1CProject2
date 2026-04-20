@@ -17,7 +17,7 @@ class BaseMedia
 {
     public:
     BaseMedia();
-    BaseMedia(Type type, string name, double length, int date, int id, string author, string genre);
+    BaseMedia(Type type, string name, double length, int date, int id, string genre);
     ~BaseMedia();
 
     string getName();     //Returns the name of the media
@@ -35,9 +35,6 @@ class BaseMedia
     int getID();
     void setID(int id);
 
-    string getAuthor();
-    void setAuthor(string author);
-
     string getGenre();
     void setGenre(string genre);
 
@@ -52,7 +49,6 @@ private:
     double length = 0.0;
     int date = 0;
     int ID = 0;
-    string author = "";
     string genre = "";
     bool available = false;
 };

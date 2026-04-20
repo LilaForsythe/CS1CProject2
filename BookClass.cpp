@@ -19,6 +19,15 @@ BookClass::~BookClass()
 {
 }
 
+string BookClass::getAuthor()
+{
+    return author;
+}
+void BookClass::setAuthor(string author)
+{
+    this->author = author;
+}
+
 void BookClass::displayMediaInfo()
 {
     cout << setw(10) << "Book" << "| " << setw(20) << this->getName() << "| ";

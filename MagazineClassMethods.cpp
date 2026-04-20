@@ -32,6 +32,15 @@ void MagazineClass::setIssue(double issue)
     this->issue = issue;
 }
 
+string MagazineClass::getAuthor()
+{
+    return author;
+}
+void MagazineClass::setAuthor(string author)
+{
+    this->author = author;
+}
+
 void MagazineClass::displayMediaInfo()
 {
     cout << "Magazine"<< "  | "<< setw(20)<< this->getName()<< "| "<< setw(4)<< this->getLength() << setw(18);

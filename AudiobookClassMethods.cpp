@@ -30,6 +30,15 @@ void AudiobookClass::setNarrator(string narrator)
     this->narrator = narrator;
 }
 
+string AudiobookClass::getAuthor()
+{
+    return author;
+}
+void AudiobookClass::setAuthor(string author)
+{
+    this->author = author;
+}
+
 void AudiobookClass::displayMediaInfo()
 {
     cout << "Audiobook " << "| " << setw(20) << this->getName() << "| ";

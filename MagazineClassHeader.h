@@ -1,16 +1,21 @@
 #ifndef MAGAZINECLASSHEADER_H
 #define MAGAZINECLASSHEADER_H
 #include "BaseMediaClassHeader.h"
+#include "AuthorInterface.h"
 
-class MagazineClass: public BaseMedia
+class MagazineClass: public BaseMedia,
+                     public AuthorInterface
 {
 public:
     MagazineClass();
     MagazineClass(Type type, string name, double length, int date, int id, string author, double issue, string genre);
-    ~MagazineClass();
+    virtual ~MagazineClass();
 
     double getIssue();
     void setIssue(double issue);
+
+    virtual string getAuthor();
+    virtual void setAuthor(string author);
 
     virtual void displayMediaInfo();
 private:

@@ -4,14 +4,13 @@ BaseMedia::BaseMedia()
     
 }
 
-BaseMedia::BaseMedia(Type type, string name, double length, int date, int id, string author, string genre)
+BaseMedia::BaseMedia(Type type, string name, double length, int date, int id, string genre)
 {
     setType(type);
     setName(name);
     setLength(length);
     setDate(date);
     setID(id);
-    setAuthor(author);
     setGenre(genre);
     setAvailable(available);
 }
@@ -65,15 +64,6 @@ int BaseMedia::getID()
 void BaseMedia::setID(int id)
 {
     this->ID = id;
-}
-
-string BaseMedia::getAuthor()
-{
-    return author;
-}
-void BaseMedia::setAuthor(string author)
-{
-    this->author = author;
 }
 
 string BaseMedia::getGenre()
