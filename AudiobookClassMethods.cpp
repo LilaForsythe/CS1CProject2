@@ -40,8 +40,8 @@ void AudiobookClass::displayMediaInfo()
     mins = (int(this->getLength() * 100)) % 100;
 
     cout << setw(2) << hrs << " hours & " << mins << " minutes" << " | " << this->getDate() << " | ";
-    cout << setw(2) << this->getID() << " | " << setw(15) << this->getAuthor() << "| ";
-    cout << setw(15) << narrator << "| " << setw(10) << this->getGenre() << "| ";
+    cout << setw(2) << this->getID() << " | " << setw(10) << this->getGenre() << "| " << setw(15);
+    cout << this->getAuthor() << "| " << setw(15) << narrator << "| ";
 
     if (isAvailable())
     {

@@ -21,12 +21,12 @@ BookClass::~BookClass()
 
 void BookClass::displayMediaInfo()
 {
-    cout << "Book      | " << setw(20) << this->getName() << "| ";
-    cout << setw(4) << this->getLength() << " pages | ";
+    cout << setw(10) << "Book" << "| " << setw(20) << this->getName() << "| ";
+    cout << setw(4) << this->getLength() << setw(18) << "pages " << "| ";
     cout << this->getDate() << " | ";
     cout << setw(2) << this->getID() << " | ";
-    cout << setw(15) << this->getAuthor() << "| ";
     cout << setw(10) << this->getGenre() << "| ";
+    cout << setw(15) << this->getAuthor() << "| ";
 
     if (isAvailable())
         cout << "Available" << endl;

@@ -30,7 +30,7 @@ int main()
     string narrator;
     string genre;
     string available;
-    int issue;
+    double issue;
     string actor1;
     string actor2;
     string director;
@@ -223,11 +223,6 @@ int main()
                 moviePtr->setAvailable(newMovie.isAvailable());
                 manager.addItem(moviePtr);
             }
-            else if (type == "Album")
-            {
-                option = Album;
-                getline(fin, available, '\n');
-            }
             else
             {
                 throw MediaTypeException(type);
@@ -248,10 +243,10 @@ int main()
     fin.close();
 
     //display all books :)
-    cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(10) << "Length";
-    cout << "| " << "Date" << " | " << "ID" << " | " << setw(15) << "Author";
-    cout << "| " << setw(10) << "Genre" << "| " << setw(12) << "Availability" << endl;
-    cout << setfill('-') << setw(105) << "" << endl << setfill(' ');
+    cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(22) << "Length";
+    cout << "| " << "Date" << " | " << "ID" << " | " << setw(10) << "Genre" << "| " << setw(15) << "Author";
+    cout << "| " << setw(12) << "Availability" << endl;
+    cout << setfill('-') << setw(130) << "" << endl << setfill(' ');
 
     for (int i = 0; i < books.size(); i++)
     {
@@ -267,9 +262,9 @@ int main()
 
     //display all audiobooks
     cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(22) << "Length";
-    cout << "| " << "Date" << " | " << "ID" << " | " << setw(15) << "Author" << "| " << setw(15) << "Narrator";
-    cout << "| " << setw(10) << "Genre" << "| " << setw(12) << "Availability" << endl;
-    cout << setfill('-') << setw(129) << "" << endl << setfill(' ');
+    cout << "| " << "Date" << " | " << "ID" << " | " << setw(10) << "Genre" << "| " << setw(15) << "Author";
+    cout << "| " << setw(15) << "Narrator" << "| "<< setw(12) << "Availability" << endl;
+    cout << setfill('-') << setw(130) << "" << endl << setfill(' ');
 
     for (int i = 0; i < audiobooks.size(); i++)
     {
@@ -284,10 +279,10 @@ int main()
     }
 
     //display all magazines
-    cout << endl << left << setw(8) << "Type" << " | " << setw(30) << "Name" << "| " << setw(10) << "Length";
-    cout << "| " << "Date" << " | " << "ID" << " | " << setw(20) << "Author" << "| " << "Issue";
-    cout << " | " << setw(10) << "Genre" << "| " << setw(12) << "Availability" << endl;
-    cout << setfill('-') << setw(122) << "" << endl << setfill(' ');
+    cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(22) << "Length";
+    cout << "| " << "Date" << " | " << "ID" << " | " << setw(10) << "Genre" << "| " << setw(15) << "Author";
+    cout << "| " << setw(15) << "Issue" << "| "<< setw(12) << "Availability" << endl;
+    cout << setfill('-') << setw(130) << "" << endl << setfill(' ');
 
     for (int i = 0; i < magazines.size(); i++)
     {
@@ -302,9 +297,9 @@ int main()
     }
 
     //display all movies
-    cout << endl << left << setw(6) << "Type" << "| " << setw(20) << "Name" << "| " << setw(21) << "Length";
-    cout << "| " << "Date" << " | " << "ID" << " | " << setw(15) << "Director" << "| " << setw(15) << "Lead 1";
-    cout << "| " << setw(15) << "Lead 2" << "| " << setw(15) << "Genre" << "| " << setw(12);
+    cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(22) << "Length";
+    cout << "| " << "Date" << " | " << "ID" << " | " << setw(10) << "Genre" << "| " << setw(15) << "Director";
+    cout << "| " << setw(15) << "Lead 1" << "| " << setw(15) << "Lead 2" << "| "<< setw(12);
     cout << "Availability" << endl;
     cout << setfill('-') << setw(147) << "" << endl << setfill(' ');
 

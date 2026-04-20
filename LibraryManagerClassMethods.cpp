@@ -126,10 +126,10 @@ void LibraryManager::displayAvailableMedia()
 {
     cout << "\n**************** AVAILABLE MEDIA ****************\n";
 
-    cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(10) << "Length";
-    cout << "| " << "Date" << " | " << "ID" << " | " << setw(15) << "Author";
-    cout << "| " << setw(10) << "Genre" << "| " << setw(12) << "Availability" << endl;
-    cout << setfill('-') << setw(105) << "" << endl << setfill(' ');
+    cout << endl << left << setw(9) << "Type" << " | " << setw(20) << "Name" << "| " << setw(22) << "Length";
+    cout << "| " << "Date" << " | " << "ID" << " | " << setw(10) << "Genre" << "| " << setw(15) << "Author";
+    cout << "| " << setw(12) << "Availability" << endl;
+    cout << setfill('-') << setw(130) << "" << endl << setfill(' ');
 
     for (int i = 0; i < mediaList.size(); i++)
     {
@@ -173,7 +173,6 @@ void LibraryManager::displayNumberOfEachType()
     int audiobookCount = 0;
     int magazineCount = 0;
     int movieCount = 0;
-    int albumCount = 0;
 
     for (int i = 0; i < mediaList.size(); i++)
     {
@@ -191,9 +190,6 @@ void LibraryManager::displayNumberOfEachType()
         case Movie:
             movieCount++;
             break;
-        case Album:
-            albumCount++;
-            break;
         }
     }
 
@@ -202,7 +198,6 @@ void LibraryManager::displayNumberOfEachType()
     cout << "Audiobooks: " << audiobookCount << endl;
     cout << "Magazines: " << magazineCount << endl;
     cout << "Movies: " << movieCount << endl;
-    cout << "Albums: " << albumCount << endl;
 }
 
 string LibraryManager::trim(const string& str)
@@ -329,11 +324,6 @@ void LibraryManager::loadFromFile(const string& fileName)
 
                 newMovie->setAvailable(fields[9] == "available");
                 addItem(newMovie);
-            }
-            else if (type == "Album")
-            {
-                // skip albums for now since no Album class is implemented
-                continue;
             }
             else
             {

@@ -56,7 +56,7 @@ void MovieClass::setDirector(string director)
 
 void MovieClass::displayMediaInfo()
 {
-    cout << "Movie " << "| " << setw(20) << this->getName() << "| ";
+    cout << setw(10) << "Movie " << "| " << setw(20) << this->getName() << "| ";
 
     int hrs = 0;
     int mins = 0;
@@ -64,9 +64,9 @@ void MovieClass::displayMediaInfo()
     hrs = this->getLength();
     mins = (int(this->getLength() * 100)) % 100;
 
-    cout << hrs << " hours & " << setw(2) << mins << " minutes" << " | " << this->getDate() << " | ";
-    cout << setw(2) << this->getID() << " | " << setw(15) << director << "| " << setw(15);
-    cout << actor1 << "| " << setw(15) << actor2 << "| " << setw(15) << this->getGenre() << "| ";
+    cout << hrs << " hours & " << setw(2) << mins << " minutes " << " | " << this->getDate() << " | ";
+    cout << setw(2) << this->getID() << " | "  << setw(10) << this->getGenre() << "| " << setw(15);
+    cout << director << "| " << setw(15) << actor1 << "| " << setw(15) << actor2 << "| ";
 
     if (isAvailable())
     {

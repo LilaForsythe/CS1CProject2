@@ -6,15 +6,15 @@ class MagazineClass: public BaseMedia
 {
 public:
     MagazineClass();
-    MagazineClass(Type type, string name, double length, int date, int id, string author, int issue, string genre);
+    MagazineClass(Type type, string name, double length, int date, int id, string author, double issue, string genre);
     ~MagazineClass();
 
-    int getIssue();
-    void setIssue(int issue);
+    double getIssue();
+    void setIssue(double issue);
 
     virtual void displayMediaInfo();
 private:
-    int issue = 0;
+    double issue = 0.0;
     Type type;
     string name = "";
     double length = 0.0;

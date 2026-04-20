@@ -11,8 +11,7 @@ enum Type
     Book,
     Audiobook,
     Magazine,
-    Movie,
-    Album
+    Movie
 };
 class BaseMedia
 {

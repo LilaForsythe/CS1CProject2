@@ -6,7 +6,7 @@ MagazineClass::MagazineClass()
 }
 
 
-MagazineClass::MagazineClass(Type type, string name, double length, int date, int id, string author, int issue, string genre)
+MagazineClass::MagazineClass(Type type, string name, double length, int date, int id, string author, double issue, string genre)
 {
     setType(type);
     setName(name);
@@ -22,21 +22,27 @@ MagazineClass::~MagazineClass()
 
 }
 
-int MagazineClass::getIssue()
+double MagazineClass::getIssue()
 {
     return issue;
 }
 
-void MagazineClass::setIssue(int issue)
+void MagazineClass::setIssue(double issue)
 {
     this->issue = issue;
 }
 
 void MagazineClass::displayMediaInfo()
 {
-    cout << "Magazine" << " | " << setw(30) << this->getName() << "| " << setw(4) << this->getLength();
-    cout << "pages | " << this->getDate() << " | " << setw(2) << this->getID() << " | " << setw(20);
-    cout << this->getAuthor() << "| " << setw(5) << issue << " | " << setw(10) << this->getGenre() << "| ";
+    cout << "Magazine"<< "  | "<< setw(20)<< this->getName()<< "| "<< setw(4)<< this->getLength() << setw(18);
+    cout << "pages" << "| " << this->getDate() << " | " << setw(2) << this->getID() << " | " << setw(10);
+    cout << this->getGenre() << "| "<< setw(15) << this->getAuthor() << "| ";
+    int vol = 0;
+    int iss = 0;
+    this->setIssue(issue+0.0001);
+    vol = issue;
+    iss = (int(issue * 100)) % 100;
+    cout << "vol " << vol << " issue " << setw (3) << iss << "| ";
     if (isAvailable())
     {
         cout << "Available" << endl;

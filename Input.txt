@@ -1,12 +1,12 @@
 Book, The Hobbit, 310, 1937, 1, J.R.R. Tolkien, Fantasy, available
 Book, Dune, 412, 1965, 5, Frank Herbert, Sci-Fi, checked out
 Audiobook, Harry Potter, 10.57, 1997, 2, J. K. Rowling, Jim Dale, Fantasy, available
-Magazine, name, 150, 2022, 3, publisher, 4, Fashion, available
-Movie, name, 2.30, 2024, 4, director, actor1, actor2, genre, available
+Magazine, Power Trip, 150, 2022, 3, Vogue, 2.04, Fashion, available
+Movie, Pulp Fiction, 2.34, 1994, 4, Q. Tarantino, John Travolta, Uma Thurman, Drama, available
 Audiobook, Project Hail Mary, 16.10, 2021, 7, Andy Weir, Ray Porter, Sci-Fi, available
-Magazine, Mysteries of The Solar System, 108, 2016, 8, National Geographic, 6, Science, available
-Movie, name, 2.01, 2007, 9, director, actor1, actor2, genre, available
+Magazine, The Solar System, 108, 2016, 8, Nat Geographic, 3.06, Science, available
+Movie, Back to the Future, 1.56, 1985, 9, R. Zemeckis, Neil Canton, Bob Gale, Sci-Fi, available
 Audiobook, Atomic Habits, 5.35, 2018, 12, James Clear, James Clear, Self-Help, available
-Magazine, name, 120, 2020, 13, publisher, 11, genre, available
-Movie, name, 2.23, 2018, 14, director, actor1, actor2, genre, available
+Magazine, Copycat Recipes, 120, 2020, 13, AllRecipes, 2.11, Food, available
+Movie, Spirited Away, 2.03, 2001, 14, Hayao Miyazaki, Miyu Irino, Rumi Hiiragi, Anime, available
 Game, Minecraft, 100, 2011, 23, Mojang, Sandbox, available
