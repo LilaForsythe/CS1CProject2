@@ -22,10 +22,10 @@ Lila's contributions:
 
 
 Mariana's contributions:
-  - Worked on a UML class diagram that showed how each class interacted with each other. (i.e. assossiation, enheritance, dependancy, and cardinality)
-  - Made and implemented the Books class to main.
-    - Which included: Length, Publication info (date) and Id, Name of book, Author, and Publisher, Genre, and Availability.
-  - 
+  - Developed a UML class diagram to visually represent the structure of the system and illustrate how different classes interact with one another. This included defining key relationships such as associations, inheritance hierarchies, dependencies, and cardinality, ensuring that the connections between classes were logically organized and accurately reflected system behavior.
+ - Designed and implemented the Books class within the main program.This class was responsible for encapsulating all relevant attributes and behaviors associated with a book entity.
+   - It included properties such as the book’s length, publication information (including publication date and unique ID), title, author, publisher, genre, and availability status.
+ - Implemented the Book Class to main to support efficient data management and interaction with other components of the system.
 
 
 
