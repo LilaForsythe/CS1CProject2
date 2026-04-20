@@ -21,6 +21,14 @@ Hana's contributions:
 - Added test cases for exceptions through a series of try-catch blocks and throw statements within the source files and main method.
 
 Lila's contributions:
+- Made the base media class
+- Made the audiobook class
+- Made the magazine class
+- Made the movie class
+- Made the input file
+- Made it so that main would be able to read the input data into various vectors
+- Fix how the individual media types output info based on their respective attributes
+- Created display functions for all of the current derived classes
 
 
 Mariana's contributions:
