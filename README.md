@@ -45,7 +45,13 @@ Gabriel's contributions:
 
 
 Michelle's contributions:
- 
+- Implemented the manager class to manage all media items using a polymorphic vector
+- Added functionality to add, remove, search by ID or name, check out, and return items
+- Integrated the manager class to main and connected it with all derived media classes 
+- Handled exceptions within manager operations 
+- Implemented functions to display all media, available media, checked out media, and media counts 
+- Tested full functionality with updated input file and exception handling  
+
 
 
 
