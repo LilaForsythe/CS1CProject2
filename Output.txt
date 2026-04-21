@@ -1,0 +1,61 @@
+Unknown media type: Game. Skipping this library entry.
+
+Type      | Name                | Length                | Date | ID | Genre     | Author         | Availability
+----------------------------------------------------------------------------------------------------------------------------------
+Book      | The Hobbit          | 310 pages             | 1937 | 1  | Fantasy   | J.R.R. Tolkien | Available
+Book      | Dune                | 412 pages             | 1965 | 5  | Sci-Fi    | Frank Herbert  | Book has been checked out.
+
+Type      | Name                | Length                | Date | ID | Genre     | Author         | Narrator       | Availability
+----------------------------------------------------------------------------------------------------------------------------------
+Audiobook | Harry Potter        | 10 hours & 57 minutes | 1997 | 2  | Fantasy   | J. K. Rowling  | Jim Dale       | Available
+Audiobook | Project Hail Mary   | 16 hours & 10 minutes | 2021 | 7  | Sci-Fi    | Andy Weir      | Ray Porter     | Available
+Audiobook | Atomic Habits       | 5  hours & 35 minutes | 2018 | 12 | Self-Help | James Clear    | James Clear    | Available
+
+Type      | Name                | Length                | Date | ID | Genre     | Author         | Issue          | Availability
+----------------------------------------------------------------------------------------------------------------------------------
+Magazine  | Power Trip          | 150 pages             | 2022 | 3  | Fashion   | Vogue          | vol 2 issue 4  | Available
+Magazine  | The Solar System    | 108 pages             | 2016 | 8  | Science   | Nat Geographic | vol 3 issue 6  | Available
+Magazine  | Copycat Recipes     | 120 pages             | 2020 | 13 | Food      | AllRecipes     | vol 2 issue 11 | Available
+
+Type      | Name                | Length                | Date | ID | Genre     | Director       | Lead 1         | Lead 2         | Availability
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Movie     | Pulp Fiction        | 2 hours & 34 minutes  | 1994 | 4  | Drama     | Q. Tarantino   | John Travolta  | Uma Thurman    | Available
+Movie     | Back to the Future  | 1 hours & 56 minutes  | 1985 | 9  | Sci-Fi    | R. Zemeckis    | Neil Canton    | Bob Gale       | Available
+Movie     | Spirited Away       | 2 hours & 3  minutes  | 2001 | 14 | Anime     | Hayao Miyazaki | Miyu Irino     | Rumi Hiiragi   | Available
+
+
+**************** MANAGER CLASS DEMO ****************
+
+**************** MEDIA COUNTS ****************
+Books: 2
+Audiobooks: 3
+Magazines: 3
+Movies: 3
+
+Searching for Dune...
+Book      | Dune                | 412 pages             | 1965 | 5  | Sci-Fi    | Frank Herbert  | Dune - Book has been checked out.
+
+Checking out item ID 1...
+Returning item ID 1...
+
+Displaying available media...
+
+**************** AVAILABLE MEDIA ****************
+
+Type      | Name                | Length                | Date | ID | Genre     | Author         | Availability
+----------------------------------------------------------------------------------------------------------------------------------
+Book      | The Hobbit          | 310 pages             | 1937 | 1  | Fantasy   | J.R.R. Tolkien | Available
+Audiobook | Harry Potter        | 10 hours & 57 minutes | 1997 | 2  | Fantasy   | J. K. Rowling  | Jim Dale       | Available
+Magazine  | Power Trip          | 150 pages             | 2022 | 3  | Fashion   | Vogue          | vol 2 issue 4  | Available
+Movie     | Pulp Fiction        | 2 hours & 34 minutes  | 1994 | 4  | Drama     | Q. Tarantino   | John Travolta  | Uma Thurman    | Available
+Audiobook | Project Hail Mary   | 16 hours & 10 minutes | 2021 | 7  | Sci-Fi    | Andy Weir      | Ray Porter     | Available
+Magazine  | The Solar System    | 108 pages             | 2016 | 8  | Science   | Nat Geographic | vol 3 issue 6  | Available
+Movie     | Back to the Future  | 1 hours & 56 minutes  | 1985 | 9  | Sci-Fi    | R. Zemeckis    | Neil Canton    | Bob Gale       | Available
+Audiobook | Atomic Habits       | 5  hours & 35 minutes | 2018 | 12 | Self-Help | James Clear    | James Clear    | Available
+Magazine  | Copycat Recipes     | 120 pages             | 2020 | 13 | Food      | AllRecipes     | vol 2 issue 11 | Available
+Movie     | Spirited Away       | 2 hours & 3  minutes  | 2001 | 14 | Anime     | Hayao Miyazaki | Miyu Irino     | Rumi Hiiragi   | Available
+
+Displaying checked out media...
+
+**************** CHECKED OUT MEDIA ****************
+Book      | Dune                | 412 pages             | 1965 | 5  | Sci-Fi    | Frank Herbert  | Dune - Book has been checked out.
