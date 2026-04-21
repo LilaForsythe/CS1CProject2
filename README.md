@@ -41,7 +41,8 @@ Mariana's contributions:
 
 
 Gabriel's contributions: 
-
+- Created a pure virtual class defining an interface for retrieving and setting the author's name.
+- Implemented the interface within the different derived classes that contain an author.
 
 
 Michelle's contributions:
